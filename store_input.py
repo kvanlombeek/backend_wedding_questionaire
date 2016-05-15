@@ -47,7 +47,7 @@ def store_results():
 	entry = [(entry['name'], entry['email'], entry['partner_name'], entry['partner_email'], entry['address'], entry['question_veggie'], entry['question_statistics'],\
 				entry['question_drinks'],entry['question_music'], entry['suggestions'], time_of_entry)]	
 	
-	print('%s is filling in the questionaire' %entry['name'])
+	print('%s is filling in the questionaire' %str(entry['name']))
 	# Write in db
 	try:
 		
