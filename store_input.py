@@ -1,7 +1,6 @@
 from flask import Flask, request, url_for, make_response, current_app
 import sqlite3
 import datetime
-from flask.ext.cors import CORS
 import json
 
 app = Flask(__name__)
@@ -35,15 +34,15 @@ def after_request(response):
 @app.route('/store_results', methods=['POST', 'OPTIONS'])
 def store_results():
 
-	print 'Beginning of store results function'
-	print 'Request method %s' %request.method
-	print 'Request values:'
-	print request.data
+	print('Beginning of store results function')
+	print('Request method %s' %request.method)
+	print('Request values:')
+	print(request.data)
 
 	# Convert form entries
 	entry = dict((key, request.form.getlist(key)[0]) for key in request.form.keys())
 	time_of_entry = datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d %H:%M:%S')	
-	print entry
+	print(entry)
 
 	# Write in db
 	try:
@@ -57,11 +56,11 @@ def store_results():
 
 		return('success')
 
-	except sqlite3.Error, e:
+	except sqlite3.Error as e:
     
 		if db_conn:
 			db_conn.rollback()
-			print "Error %s:" % e.args[0]
+			print("Error %s:" % e.args[0])
 			return('error')
 
 
