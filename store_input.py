@@ -43,11 +43,12 @@ def store_results():
 
 	# Convert form entries
 	entry = dict((key, request.form.getlist(key)[0]) for key in request.form.keys())
+	print('%s is filling in the questionaire' %str(entry['name']))
 	time_of_entry = datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d %H:%M:%S')
 	entry = [(entry['name'], entry['email'], entry['partner_name'], entry['partner_email'], entry['address'], entry['question_veggie'], entry['question_statistics'],\
 				entry['question_drinks'],entry['question_music'], entry['suggestions'], time_of_entry)]	
 	
-	print('%s is filling in the questionaire' %str(entry['name']))
+
 	# Write in db
 	try:
 		
